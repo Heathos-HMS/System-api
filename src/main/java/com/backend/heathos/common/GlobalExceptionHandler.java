@@ -32,8 +32,15 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ApiResponse<Void>> handleRuntimeException(RuntimeException ex) {
+
+        if ("Slot already booked".equals(ex.getMessage())) {
+            return ResponseEntity
+                    .status(HttpStatus.CONFLICT)   // 409
+                    .body(ApiResponse.error(ex.getMessage()));
+        }
+
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)          // 400
+                .status(HttpStatus.BAD_REQUEST)   // 400
                 .body(ApiResponse.error(ex.getMessage()));
     }
 
@@ -45,6 +52,8 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)  // 500
                 .body(ApiResponse.error("Something went wrong. Please try again."));
     }
+
+
 
 
 }
