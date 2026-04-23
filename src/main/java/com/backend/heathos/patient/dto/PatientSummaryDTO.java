@@ -23,4 +23,10 @@ public class PatientSummaryDTO {
     private String emergencyContact;
     private String insuranceProvider;
     private String insuranceNumber;
+    private Double height;
+    private Double weight;
+    private String occupation;
+    private Integer age;
+
+
 }

@@ -3,6 +3,7 @@ package com.backend.heathos.patient.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,4 +48,15 @@ public class PatientRegisterRequest {
 
     @Schema(description = "Insurance policy number — optional", example = "NHIS-12345")
     private String insuranceNumber;
+
+    @Schema(description = "Patient height in centimeters", example = "175")
+    @Positive(message = "Height must be a positive value")
+    private Double height;
+
+    @Schema(description = "Patient weight in kilograms", example = "70")
+    @Positive(message = "Weight must be a positive value")
+    private Double weight;
+
+    @Schema(description = "Patient occupation", example = "Software Engineer")
+    private String occupation;
 }

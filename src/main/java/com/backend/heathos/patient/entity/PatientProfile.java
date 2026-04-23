@@ -34,6 +34,15 @@ public class PatientProfile {
 
     private String gender;
 
+    @Column(name = "height")
+    private Double height;
+
+    @Column(name = "weight")
+    private Double weight;
+
+    @Column(name = "occupation")
+    private String occupation;
+
     private String address;
 
     @Column(name = "emergency_contact")
@@ -48,4 +57,9 @@ public class PatientProfile {
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
+
+    public Integer getAge() {
+        if (dob == null) return null;
+        return java.time.Period.between(dob, java.time.LocalDate.now()).getYears();
+    }
 }

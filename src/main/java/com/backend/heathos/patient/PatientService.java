@@ -59,6 +59,9 @@ public class PatientService {
         profile.setEmergencyContact(req.getEmergencyContact());
         profile.setInsuranceProvider(req.getInsuranceProvider());
         profile.setInsuranceNumber(req.getInsuranceNumber());
+        profile.setHeight(req.getHeight());
+        profile.setWeight(req.getWeight());
+        profile.setOccupation(req.getOccupation());
 
         return patientRepository.save(profile);
     }
@@ -90,7 +93,11 @@ public class PatientService {
                 profile.getAddress(),
                 profile.getEmergencyContact(),
                 profile.getInsuranceProvider(),
-                profile.getInsuranceNumber()
+                profile.getInsuranceNumber(),
+                profile.getHeight(),
+                profile.getWeight(),
+                profile.getOccupation(),
+                profile.getAge()
         );
     }
 
